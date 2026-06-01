@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>월드컵 국기 대진표 | World Cup Flag Bracket</title>
+    <meta name="description" content="국기만으로 빠르게 보는 월드컵 토너먼트 대진표. 국가를 누르면 선수명단과 경기 상태를 확인할 수 있습니다." />
+    <meta property="og:title" content="월드컵 국기 대진표" />
+    <meta property="og:description" content="국기 중심 월드컵 토너먼트 대진표와 국가별 선수명단." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#08111f" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">World Cup 2026</p>
+        <h1>월드컵 국기 대진표</h1>
+        <p class="lead">국기만 보고 토너먼트 흐름을 빠르게 확인하세요. 국기를 누르면 국가명, 경기 상태, 선수명단 페이지가 열립니다.</p>
+      </div>
+      <aside class="ad-slot" aria-label="광고 영역">
+        <span>AD</span>
+        <strong>광고 영역</strong>
+        <small>AdSense 자리</small>
+      </aside>
+    </header>
+
+    <main>
+      <section class="status-strip" aria-label="업데이트 상태">
+        <div>
+          <span class="dot live"></span>
+          <strong>업데이트 준비중</strong>
+          <p>공식 대진/선수명단 확정 후 JSON만 교체하면 반영됩니다.</p>
+        </div>
+        <button id="reset-view" type="button">전체 보기</button>
+      </section>
+
+      <section class="layout">
+        <aside class="team-panel" id="team-panel" aria-live="polite">
+          <p class="panel-kicker">국가 선택</p>
+          <div class="panel-flag">🏆</div>
+          <h2>국기를 눌러보세요</h2>
+          <p class="panel-desc">국가명, 진출 상태, 선수명단 링크가 여기에 표시됩니다.</p>
+        </aside>
+
+        <section class="bracket-wrap" aria-label="월드컵 토너먼트 대진표">
+          <div id="bracket" class="bracket"></div>
+        </section>
+      </section>
+
+      <section class="cards" aria-label="인기 국가 바로가기">
+        <h2>인기 국가</h2>
+        <div id="team-cards" class="team-cards"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>비공식 팬/정보 페이지입니다. FIFA/각 협회 공식 로고를 사용하지 않습니다.</p>
+      <p>© Studio Nani</p>
+    </footer>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
