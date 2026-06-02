@@ -6,19 +6,20 @@ const groupsEl = document.querySelector('#groups');
 const resetBtn = document.querySelector('#reset-view');
 let selectedTeam = null;
 
-const slotKo = {
-  'Winner Group': '조 1위',
-  'Runner-up Group': '조 2위',
-  '3rd Group': '조 3위 후보',
-  'Winner Match': '승자',
-  'Loser Match': '패자',
-};
-
 function getTeam(code) {
   return data.teams[code];
 }
 
 function slotLabel(slot) {
+  return slot
+    .replace(/Winner Group ([A-L])/g, 'Group $1 winner')
+    .replace(/Runner-up Group ([A-L])/g, 'Group $1 runner-up')
+    .replace(/3rd Group ([A-L/]+)/g, '3rd-place candidate: Group $1')
+    .replace(/Winner Match (\d+)/g, 'Winner M$1')
+    .replace(/Loser Match (\d+)/g, 'Loser M$1');
+}
+
+function slotLabelKo(slot) {
   return slot
     .replace(/Winner Group ([A-L])/g, '$1조 1위')
     .replace(/Runner-up Group ([A-L])/g, '$1조 2위')
@@ -37,10 +38,10 @@ function renderTeamButton(code, match) {
   button.disabled = isSlot;
   button.dataset.team = code;
   button.innerHTML = isSlot
-    ? `<span class="slot-name">${slotLabel(code)}</span><span class="seed">예정</span>`
-    : `<span><span class="flag" aria-hidden="true">${team.flag}</span><strong>${team.nameKo}</strong></span><span class="seed">${team.status}</span>`;
+    ? `<span class="slot-name">${slotLabel(code)}<small>${slotLabelKo(code)}</small></span><span class="seed">TBD</span>`
+    : `<span><span class="flag" aria-hidden="true">${team.flag}</span><strong>${team.name}</strong><small>${team.nameKo}</small></span><span class="seed">${team.status}</span>`;
   if (!isSlot) {
-    button.setAttribute('aria-label', `${team.nameKo} 정보 보기`);
+    button.setAttribute('aria-label', `View ${team.name} squad`);
     button.addEventListener('click', () => selectTeam(code));
   }
   return button;
@@ -51,7 +52,7 @@ function renderBracket() {
   data.rounds.forEach((round) => {
     const roundEl = document.createElement('div');
     roundEl.className = 'round';
-    roundEl.innerHTML = `<h2 class="round-title">${round.title}</h2>`;
+    roundEl.innerHTML = `<h2 class="round-title">${round.title}<small>${round.titleKo || ''}</small></h2>`;
 
     round.matches.forEach((match) => {
       const matchEl = document.createElement('article');
@@ -77,12 +78,22 @@ function renderGroups() {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = ['group-team', selectedTeam === code ? 'selected' : ''].filter(Boolean).join(' ');
-      button.innerHTML = `<span class="flag">${team.flag}</span><span><strong>${team.nameKo}</strong><small>${team.status}</small></span>`;
+      button.innerHTML = `<span class="flag">${team.flag}</span><span><strong>${team.name}</strong><small>${team.nameKo} · ${team.status}</small></span>`;
       button.addEventListener('click', () => selectTeam(code));
       card.appendChild(button);
     });
     groupsEl.appendChild(card);
   });
+}
+
+function renderSquad(team) {
+  return team.squad.map((player) => `
+    <li class="squad-player">
+      <span class="player-pos">${player.pos || '-'}</span>
+      <span class="player-main"><strong>${player.name}</strong><small>${player.club || 'Club TBA'}</small></span>
+      <span class="player-meta">${player.caps || 0} caps · ${player.goals || 0} goals</span>
+    </li>
+  `).join('');
 }
 
 function selectTeam(code) {
@@ -92,16 +103,16 @@ function selectTeam(code) {
   panelEl.innerHTML = `
     <p class="panel-kicker">${team.confed}</p>
     <div class="panel-flag">${team.flag}</div>
-    <h2>${team.nameKo}</h2>
-    <p class="panel-desc">${team.nameEn}</p>
+    <h2>${team.name}</h2>
+    <p class="panel-desc ko">${team.nameKo}</p>
     <div class="meta-list">
-      <div><span>상태</span><strong>${team.status}</strong></div>
-      <div><span>업데이트</span><strong>${data.updatedAt}</strong></div>
-      <div><span>코드</span><strong>${code}</strong></div>
+      <div><span>Group slot</span><strong>${team.status}</strong></div>
+      <div><span>Korean</span><strong>${team.statusKo || team.status}</strong></div>
+      <div><span>Updated</span><strong>${data.updatedAt}</strong></div>
     </div>
-    <p class="panel-desc">대표 선수/후보</p>
-    <div class="squad-list">${team.squad.map((player) => `<b>${player}</b>`).join('')}</div>
-    ${team.squadUrl ? `<a class="squad-link" href="${team.squadUrl}" target="_blank" rel="noopener">국가대표 페이지 보기</a>` : ''}
+    <div class="squad-header"><strong>Final squad</strong><span>${team.squad.length} players</span></div>
+    <ul class="squad-list">${renderSquad(team)}</ul>
+    ${team.squadUrl ? `<a class="squad-link" href="${team.squadUrl}" target="_blank" rel="noopener">Open national team page</a>` : ''}
   `;
   renderBracket();
   renderGroups();
@@ -115,7 +126,7 @@ function renderCards() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'team-card';
-    button.innerHTML = `<span class="flag">${team.flag}</span><strong>${team.nameKo}</strong><small>${team.nameEn}</small>`;
+    button.innerHTML = `<span class="flag">${team.flag}</span><strong>${team.name}</strong><small>${team.nameKo}</small>`;
     button.addEventListener('click', () => selectTeam(code));
     cardsEl.appendChild(button);
   });
@@ -124,10 +135,10 @@ function renderCards() {
 resetBtn.addEventListener('click', () => {
   selectedTeam = null;
   panelEl.innerHTML = `
-    <p class="panel-kicker">국가 선택</p>
+    <p class="panel-kicker">Select a team</p>
     <div class="panel-flag">🏆</div>
-    <h2>국기를 눌러보세요</h2>
-    <p class="panel-desc">실제 조편성, 진출 슬롯, 국가대표 페이지 링크가 여기에 표시됩니다.</p>
+    <h2>Tap a flag</h2>
+    <p class="panel-desc">See group slot, Korean label, and final squad details.</p>
   `;
   renderBracket();
   renderGroups();

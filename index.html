@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>월드컵 국기 대진표 | World Cup Flag Bracket</title>
-    <meta name="description" content="국기만으로 빠르게 보는 월드컵 토너먼트 대진표. 국가를 누르면 선수명단과 경기 상태를 확인할 수 있습니다." />
-    <meta property="og:title" content="월드컵 국기 대진표" />
-    <meta property="og:description" content="국기 중심 월드컵 토너먼트 대진표와 국가별 선수명단." />
+    <title>World Cup 2026 Flag Bracket | Groups, Knockout Slots, Squads</title>
+    <meta name="description" content="A fast flag-first 2026 World Cup bracket with real groups, knockout slots, final squads, and Korean labels." />
+    <meta property="og:title" content="World Cup 2026 Flag Bracket" />
+    <meta property="og:description" content="Real World Cup 2026 groups, knockout slots, final squads, and Korean labels." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#08111f" />
     <link rel="stylesheet" href="./styles.css" />
@@ -14,54 +14,54 @@
   <body>
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">World Cup 2026</p>
-        <h1>월드컵 국기 대진표</h1>
-        <p class="lead">2026 월드컵 실제 조편성과 공식 32강 토너먼트 슬롯을 국기 중심으로 빠르게 확인하세요. 국기를 누르면 국가명과 상태가 열립니다.</p>
+        <p class="eyebrow">World Cup 2026 · 월드컵 2026</p>
+        <h1>World Cup Flag Bracket</h1>
+        <p class="lead">Check the real 2026 World Cup groups, official knockout slots, and final squads in a fast flag-first view. Korean labels are shown as secondary text.</p>
       </div>
-      <aside class="ad-slot" aria-label="광고 영역">
+      <aside class="ad-slot" aria-label="Ad slot">
         <span>AD</span>
-        <strong>광고 영역</strong>
-        <small>AdSense 자리</small>
+        <strong>Ad slot</strong>
+        <small>AdSense placeholder</small>
       </aside>
     </header>
 
     <main>
-      <section class="status-strip" aria-label="업데이트 상태">
+      <section class="status-strip" aria-label="Update status">
         <div>
           <span class="dot live"></span>
-          <strong>실제 조편성 반영</strong>
-          <p>2026 본선 A–L조와 32강 공식 슬롯 기준. 조별 순위 확정 후 승자/상대만 갱신합니다.</p>
+          <strong>Real groups + final squads loaded</strong>
+          <p>English is the default language. Korean labels are added below names and round titles.</p>
         </div>
-        <button id="reset-view" type="button">전체 보기</button>
+        <button id="reset-view" type="button">Reset view</button>
       </section>
 
       <section class="layout">
         <aside class="team-panel" id="team-panel" aria-live="polite">
-          <p class="panel-kicker">국가 선택</p>
+          <p class="panel-kicker">Select a team</p>
           <div class="panel-flag">🏆</div>
-          <h2>국기를 눌러보세요</h2>
-          <p class="panel-desc">실제 조편성, 진출 슬롯, 국가대표 페이지 링크가 여기에 표시됩니다.</p>
+          <h2>Tap a flag</h2>
+          <p class="panel-desc">See group slot, Korean label, and final squad details.</p>
         </aside>
 
-        <section class="bracket-wrap" aria-label="월드컵 토너먼트 대진표">
+        <section class="bracket-wrap" aria-label="World Cup knockout bracket">
           <div id="bracket" class="bracket"></div>
         </section>
       </section>
 
-      <section class="groups-section" aria-label="실제 조편성">
-        <h2>실제 조편성</h2>
-        <p>각 조 상위 2팀 + 성적 좋은 조 3위 8팀이 32강으로 진출합니다.</p>
+      <section class="groups-section" aria-label="Real groups">
+        <h2>Real groups <small>실제 조편성</small></h2>
+        <p>The top two teams in each group plus the eight best third-placed teams advance to the Round of 32.</p>
         <div id="groups" class="groups-grid"></div>
       </section>
 
-      <section class="cards" aria-label="인기 국가 바로가기">
-        <h2>인기 국가</h2>
+      <section class="cards" aria-label="Popular teams">
+        <h2>Popular teams <small>인기 국가</small></h2>
         <div id="team-cards" class="team-cards"></div>
       </section>
     </main>
 
     <footer>
-      <p>비공식 팬/정보 페이지입니다. FIFA/각 협회 공식 로고를 사용하지 않습니다.</p>
+      <p>Unofficial fan/information page. No FIFA or association official logos are used.</p>
       <p>© Studio Nani</p>
     </footer>
 
