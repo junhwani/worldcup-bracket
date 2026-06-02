@@ -140,6 +140,21 @@ main { padding: 0 clamp(1rem, 4vw, 3.5rem) 3rem; }
 .team-row:hover, .team-row.selected { border-color: var(--blue); background: rgba(100,181,255,.14); }
 .team-row.winner { border-color: var(--green); background: rgba(50,213,131,.15); }
 .flag { font-size: 1.85rem; }
+.eng-flag {
+  display: inline-block;
+  width: 1.85rem;
+  height: 1.18rem;
+  margin-right: .02rem;
+  vertical-align: -.18rem;
+  border-radius: .14rem;
+  border: 1px solid rgba(255,255,255,.38);
+  background:
+    linear-gradient(90deg, transparent 0 41%, #cf142b 41% 59%, transparent 59% 100%),
+    linear-gradient(180deg, transparent 0 36%, #cf142b 36% 64%, transparent 64% 100%),
+    #fff;
+  box-shadow: 0 7px 18px rgba(0,0,0,.22);
+}
+.panel-eng-flag { width: 5.5rem; height: 3.5rem; vertical-align: 0; }
 .team-row strong { display: inline-block; font-size: .88rem; margin-left: .35rem; }
 .team-row small { display: block; color: var(--muted); font-size: .7rem; margin-left: 2.25rem; }
 .slot-name { font-size: .86rem; font-weight: 800; text-align: left; }

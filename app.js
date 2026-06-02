@@ -81,6 +81,14 @@ function teamStatus(team) {
   return currentLang === 'ko' ? (team.statusKo || team.status) : team.status;
 }
 
+function flagMarkup(code, extraClass = '') {
+  const team = getTeam(code);
+  if (code === 'ENG') {
+    return `<span class="eng-flag ${extraClass}" role="img" aria-label="England flag"></span>`;
+  }
+  return `<span class="flag ${extraClass}" aria-hidden="true">${team.flag}</span>`;
+}
+
 function slotLabel(slot) {
   if (currentLang === 'ko') {
     return slot
@@ -113,7 +121,7 @@ function renderTeamButton(code, match) {
   button.dataset.team = code;
   button.innerHTML = isSlot
     ? `<span class="slot-name">${slotLabel(code)}</span><span class="seed">${t('tbd')}</span>`
-    : `<span><span class="flag" aria-hidden="true">${team.flag}</span><strong>${teamName(team)}</strong></span><span class="seed">${teamStatus(team)}</span>`;
+    : `<span>${flagMarkup(code)}<strong>${teamName(team)}</strong></span><span class="seed">${teamStatus(team)}</span>`;
   if (!isSlot) {
     button.setAttribute('aria-label', `View ${teamName(team)} squad`);
     button.addEventListener('click', () => selectTeam(code));
@@ -153,7 +161,7 @@ function renderGroups() {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = ['group-team', selectedTeam === code ? 'selected' : ''].filter(Boolean).join(' ');
-      button.innerHTML = `<span class="flag">${team.flag}</span><span><strong>${teamName(team)}</strong><small>${teamStatus(team)}</small></span>`;
+      button.innerHTML = `${flagMarkup(code)}<span><strong>${teamName(team)}</strong><small>${teamStatus(team)}</small></span>`;
       button.addEventListener('click', () => selectTeam(code));
       card.appendChild(button);
     });
@@ -186,7 +194,7 @@ function selectTeam(code) {
   selectedTeam = code;
   panelEl.innerHTML = `
     <p class="panel-kicker">${team.confed}</p>
-    <div class="panel-flag">${team.flag}</div>
+    <div class="panel-flag">${code === 'ENG' ? flagMarkup(code, 'panel-eng-flag') : team.flag}</div>
     <h2>${teamName(team)}</h2>
     <div class="meta-list">
       <div><span>${t('groupSlot')}</span><strong>${teamStatus(team)}</strong></div>
@@ -208,7 +216,7 @@ function renderCards() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'team-card';
-    button.innerHTML = `<span class="flag">${team.flag}</span><strong>${teamName(team)}</strong><small>${teamStatus(team)}</small>`;
+    button.innerHTML = `${flagMarkup(code)}<strong>${teamName(team)}</strong><small>${teamStatus(team)}</small>`;
     button.addEventListener('click', () => selectTeam(code));
     cardsEl.appendChild(button);
   });
