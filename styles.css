@@ -98,9 +98,9 @@ main { padding: 0 clamp(1rem, 4vw, 3.5rem) 3rem; }
 .squad-header span { color: var(--muted); font-size: .82rem; }
 .squad-list { list-style: none; display: grid; gap: .45rem; margin: .8rem 0 0; padding: 0; max-height: 52vh; overflow-y: auto; padding-right: .25rem; }
 .squad-player { --pos-color: var(--muted); --pos-bg: rgba(159,176,197,.13); --pos-border: rgba(159,176,197,.35); --pos-row-bg: rgba(159,176,197,.08); display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .55rem; border: 1px solid var(--pos-border); background: linear-gradient(90deg, var(--pos-row-bg), rgba(255,255,255,.055)); padding: .55rem; border-radius: 14px; }
-.squad-player.pos-gk { --pos-color: #30d158; --pos-bg: rgba(48,209,88,.18); --pos-border: rgba(48,209,88,.45); --pos-row-bg: rgba(48,209,88,.10); }
+.squad-player.pos-gk { --pos-color: #facc15; --pos-bg: rgba(250,204,21,.18); --pos-border: rgba(250,204,21,.45); --pos-row-bg: rgba(250,204,21,.10); }
 .squad-player.pos-df { --pos-color: #3b82f6; --pos-bg: rgba(59,130,246,.18); --pos-border: rgba(59,130,246,.45); --pos-row-bg: rgba(59,130,246,.10); }
-.squad-player.pos-mf { --pos-color: #facc15; --pos-bg: rgba(250,204,21,.18); --pos-border: rgba(250,204,21,.45); --pos-row-bg: rgba(250,204,21,.10); }
+.squad-player.pos-mf { --pos-color: #30d158; --pos-bg: rgba(48,209,88,.18); --pos-border: rgba(48,209,88,.45); --pos-row-bg: rgba(48,209,88,.10); }
 .squad-player.pos-fw { --pos-color: #ef4444; --pos-bg: rgba(239,68,68,.18); --pos-border: rgba(239,68,68,.45); --pos-row-bg: rgba(239,68,68,.10); }
 .player-pos { display: inline-grid; place-items: center; border-radius: 10px; background: var(--pos-bg); color: var(--pos-color); font-size: .76rem; font-weight: 900; }
 .player-main strong { display: block; font-size: .9rem; }
