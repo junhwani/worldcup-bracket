@@ -10,6 +10,7 @@
   --gold: #ffd166;
   --blue: #64b5ff;
   --red: #ff6b6b;
+  --scroll-hint: "Scroll horizontally for Final →";
 }
 
 * { box-sizing: border-box; }
@@ -47,7 +48,10 @@ button { font: inherit; }
   backdrop-filter: blur(18px);
 }
 
-.hero-copy { border-radius: 32px; padding: clamp(1.5rem, 4vw, 3rem); }
+.hero-copy { border-radius: 32px; padding: clamp(1.5rem, 4vw, 3rem); position: relative; }
+.language-switch { display: inline-flex; gap: .35rem; padding: .28rem; margin-bottom: 1rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.06); }
+.lang-btn { border: 0; border-radius: 999px; padding: .5rem .85rem; color: var(--muted); background: transparent; font-weight: 900; cursor: pointer; }
+.lang-btn.active { color: #06101f; background: var(--green); box-shadow: 0 8px 22px rgba(50,213,131,.22); }
 .eyebrow { color: var(--green); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 .75rem; }
 h1 { font-size: clamp(2.4rem, 8vw, 5.8rem); line-height: .94; margin: 0; letter-spacing: -0.045em; }
 h2 small, .round-title small { display: block; color: var(--muted); font-size: .72em; letter-spacing: 0; text-transform: none; margin-top: .15rem; }
@@ -93,15 +97,19 @@ main { padding: 0 clamp(1rem, 4vw, 3.5rem) 3rem; }
 .squad-header { display: flex; justify-content: space-between; gap: .8rem; align-items: center; margin-top: 1rem; }
 .squad-header span { color: var(--muted); font-size: .82rem; }
 .squad-list { list-style: none; display: grid; gap: .45rem; margin: .8rem 0 0; padding: 0; max-height: 52vh; overflow-y: auto; padding-right: .25rem; }
-.squad-player { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .55rem; border: 1px solid var(--line); background: rgba(255,255,255,.06); padding: .55rem; border-radius: 14px; }
-.player-pos { display: inline-grid; place-items: center; border-radius: 10px; background: rgba(50,213,131,.14); color: var(--green); font-size: .76rem; font-weight: 900; }
+.squad-player { --pos-color: var(--muted); --pos-bg: rgba(159,176,197,.13); --pos-border: rgba(159,176,197,.35); --pos-row-bg: rgba(159,176,197,.08); display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .55rem; border: 1px solid var(--pos-border); background: linear-gradient(90deg, var(--pos-row-bg), rgba(255,255,255,.055)); padding: .55rem; border-radius: 14px; }
+.squad-player.pos-gk { --pos-color: #30d158; --pos-bg: rgba(48,209,88,.18); --pos-border: rgba(48,209,88,.45); --pos-row-bg: rgba(48,209,88,.10); }
+.squad-player.pos-df { --pos-color: #3b82f6; --pos-bg: rgba(59,130,246,.18); --pos-border: rgba(59,130,246,.45); --pos-row-bg: rgba(59,130,246,.10); }
+.squad-player.pos-mf { --pos-color: #facc15; --pos-bg: rgba(250,204,21,.18); --pos-border: rgba(250,204,21,.45); --pos-row-bg: rgba(250,204,21,.10); }
+.squad-player.pos-fw { --pos-color: #ef4444; --pos-bg: rgba(239,68,68,.18); --pos-border: rgba(239,68,68,.45); --pos-row-bg: rgba(239,68,68,.10); }
+.player-pos { display: inline-grid; place-items: center; border-radius: 10px; background: var(--pos-bg); color: var(--pos-color); font-size: .76rem; font-weight: 900; }
 .player-main strong { display: block; font-size: .9rem; }
 .player-main small, .player-meta { display: block; color: var(--muted); font-size: .72rem; }
 .player-meta { grid-column: 2; }
 .squad-link { display: inline-flex; text-decoration: none; color: #06101f; background: var(--green); padding: .78rem 1rem; border-radius: 14px; font-weight: 900; margin-top: 1rem; }
 
 .bracket-wrap { overflow-x: auto; padding-bottom: .5rem; border-radius: 20px; }
-.bracket-wrap::after { content: "Scroll horizontally for Final →"; display: block; color: var(--muted); font-size: .78rem; margin-top: .45rem; text-align: right; }
+.bracket-wrap::after { content: var(--scroll-hint); display: block; color: var(--muted); font-size: .78rem; margin-top: .45rem; text-align: right; }
 .bracket { min-width: 1180px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; align-items: center; }
 .round { display: grid; gap: .8rem; }
 .round-title { color: var(--muted); font-size: .9rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 .2rem; }

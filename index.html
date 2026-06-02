@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>World Cup 2026 Flag Bracket | Groups, Knockout Slots, Squads</title>
-    <meta name="description" content="A fast flag-first 2026 World Cup bracket with real groups, knockout slots, final squads, and Korean labels." />
+    <meta name="description" content="A fast flag-first 2026 World Cup bracket with real groups, knockout slots, final squads, and language switching." />
     <meta property="og:title" content="World Cup 2026 Flag Bracket" />
-    <meta property="og:description" content="Real World Cup 2026 groups, knockout slots, final squads, and Korean labels." />
+    <meta property="og:description" content="Real World Cup 2026 groups, knockout slots, final squads, and language switching." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#08111f" />
     <link rel="stylesheet" href="./styles.css" />
@@ -14,14 +14,18 @@
   <body>
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">World Cup 2026 · 월드컵 2026</p>
-        <h1>World Cup Flag Bracket</h1>
-        <p class="lead">Check the real 2026 World Cup groups, official knockout slots, and final squads in a fast flag-first view. Korean labels are shown as secondary text.</p>
+        <div class="language-switch" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang="en">English</button>
+          <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+        </div>
+        <p class="eyebrow" data-i18n="eyebrow">World Cup 2026</p>
+        <h1 data-i18n="title">World Cup Flag Bracket</h1>
+        <p class="lead" data-i18n="lead">Check the real 2026 World Cup groups, official knockout slots, and final squads in a fast flag-first view.</p>
       </div>
       <aside class="ad-slot" aria-label="Ad slot">
         <span>AD</span>
-        <strong>Ad slot</strong>
-        <small>AdSense placeholder</small>
+        <strong data-i18n="adTitle">Ad slot</strong>
+        <small data-i18n="adSub">AdSense placeholder</small>
       </aside>
     </header>
 
@@ -29,19 +33,14 @@
       <section class="status-strip" aria-label="Update status">
         <div>
           <span class="dot live"></span>
-          <strong>Real groups + final squads loaded</strong>
-          <p>English is the default language. Korean labels are added below names and round titles.</p>
+          <strong data-i18n="statusTitle">Real groups + final squads loaded</strong>
+          <p data-i18n="statusDesc">Use the language buttons at the top to switch the whole page.</p>
         </div>
-        <button id="reset-view" type="button">Reset view</button>
+        <button id="reset-view" type="button" data-i18n="reset">Reset view</button>
       </section>
 
       <section class="layout">
-        <aside class="team-panel" id="team-panel" aria-live="polite">
-          <p class="panel-kicker">Select a team</p>
-          <div class="panel-flag">🏆</div>
-          <h2>Tap a flag</h2>
-          <p class="panel-desc">See group slot, Korean label, and final squad details.</p>
-        </aside>
+        <aside class="team-panel" id="team-panel" aria-live="polite"></aside>
 
         <section class="bracket-wrap" aria-label="World Cup knockout bracket">
           <div id="bracket" class="bracket"></div>
@@ -49,19 +48,19 @@
       </section>
 
       <section class="groups-section" aria-label="Real groups">
-        <h2>Real groups <small>실제 조편성</small></h2>
-        <p>The top two teams in each group plus the eight best third-placed teams advance to the Round of 32.</p>
+        <h2 data-i18n="groupsTitle">Real groups</h2>
+        <p data-i18n="groupsDesc">The top two teams in each group plus the eight best third-placed teams advance to the Round of 32.</p>
         <div id="groups" class="groups-grid"></div>
       </section>
 
       <section class="cards" aria-label="Popular teams">
-        <h2>Popular teams <small>인기 국가</small></h2>
+        <h2 data-i18n="popularTitle">Popular teams</h2>
         <div id="team-cards" class="team-cards"></div>
       </section>
     </main>
 
     <footer>
-      <p>Unofficial fan/information page. No FIFA or association official logos are used.</p>
+      <p data-i18n="footerNote">Unofficial fan/information page. No FIFA or association official logos are used.</p>
       <p>© Studio Nani</p>
     </footer>
 
