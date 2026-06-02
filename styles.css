@@ -178,3 +178,13 @@ footer p { margin: .2rem 0; }
   .status-strip { align-items: flex-start; flex-direction: column; }
   .bracket { min-width: 840px; }
 }
+
+
+.site-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.15rem; }
+.site-links a, footer a { color: var(--green); text-decoration: none; font-weight: 800; }
+.site-links a { border: 1px solid var(--line); border-radius: 999px; padding: .48rem .75rem; background: rgba(255,255,255,.055); }
+.info-page main { max-width: 880px; margin: 0 auto; }
+.info-card { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.045)); border-radius: 28px; padding: clamp(1.2rem, 4vw, 2rem); line-height: 1.75; color: var(--text); }
+.info-card p, .info-card li { color: var(--muted); }
+.info-card h2 { margin-top: 1.4rem; }
+.info-card a { color: var(--green); }

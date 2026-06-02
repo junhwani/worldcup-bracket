@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://junhwani.github.io/2026-world-cup/sitemap.xml
