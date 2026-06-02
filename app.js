@@ -110,6 +110,16 @@ function posClass(pos) {
   return `pos-${String(pos || 'na').toLowerCase()}`;
 }
 
+const posOrder = { GK: 0, DF: 1, MF: 2, FW: 3 };
+
+function squadByPosition(squad) {
+  return [...squad].sort((a, b) => {
+    const aRank = posOrder[a.pos] ?? 99;
+    const bRank = posOrder[b.pos] ?? 99;
+    return aRank - bRank;
+  });
+}
+
 function renderTeamButton(code, match) {
   const team = getTeam(code);
   const isSlot = !team;
@@ -170,7 +180,7 @@ function renderGroups() {
 }
 
 function renderSquad(team) {
-  return team.squad.map((player) => `
+  return squadByPosition(team.squad).map((player) => `
     <li class="squad-player ${posClass(player.pos)}">
       <span class="player-pos">${player.pos || '-'}</span>
       <span class="player-main"><strong>${player.name}</strong><small>${player.club || t('clubTba')}</small></span>
