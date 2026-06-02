@@ -83,9 +83,6 @@ function teamStatus(team) {
 
 function flagMarkup(code, extraClass = '') {
   const team = getTeam(code);
-  if (code === 'ENG') {
-    return `<span class="eng-flag ${extraClass}" role="img" aria-label="England flag"></span>`;
-  }
   return `<span class="flag ${extraClass}" aria-hidden="true">${team.flag}</span>`;
 }
 
@@ -204,7 +201,7 @@ function selectTeam(code) {
   selectedTeam = code;
   panelEl.innerHTML = `
     <p class="panel-kicker">${team.confed}</p>
-    <div class="panel-flag">${code === 'ENG' ? flagMarkup(code, 'panel-eng-flag') : team.flag}</div>
+    <div class="panel-flag">${team.flag}</div>
     <h2>${teamName(team)}</h2>
     <div class="meta-list">
       <div><span>${t('groupSlot')}</span><strong>${teamStatus(team)}</strong></div>
