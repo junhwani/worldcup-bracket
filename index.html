@@ -16,7 +16,7 @@
       <div class="hero-copy">
         <p class="eyebrow">World Cup 2026</p>
         <h1>월드컵 국기 대진표</h1>
-        <p class="lead">국기만 보고 토너먼트 흐름을 빠르게 확인하세요. 국기를 누르면 국가명, 경기 상태, 선수명단 페이지가 열립니다.</p>
+        <p class="lead">2026 월드컵 실제 조편성과 공식 32강 토너먼트 슬롯을 국기 중심으로 빠르게 확인하세요. 국기를 누르면 국가명과 상태가 열립니다.</p>
       </div>
       <aside class="ad-slot" aria-label="광고 영역">
         <span>AD</span>
@@ -29,8 +29,8 @@
       <section class="status-strip" aria-label="업데이트 상태">
         <div>
           <span class="dot live"></span>
-          <strong>업데이트 준비중</strong>
-          <p>공식 대진/선수명단 확정 후 JSON만 교체하면 반영됩니다.</p>
+          <strong>실제 조편성 반영</strong>
+          <p>2026 본선 A–L조와 32강 공식 슬롯 기준. 조별 순위 확정 후 승자/상대만 갱신합니다.</p>
         </div>
         <button id="reset-view" type="button">전체 보기</button>
       </section>
@@ -40,12 +40,18 @@
           <p class="panel-kicker">국가 선택</p>
           <div class="panel-flag">🏆</div>
           <h2>국기를 눌러보세요</h2>
-          <p class="panel-desc">국가명, 진출 상태, 선수명단 링크가 여기에 표시됩니다.</p>
+          <p class="panel-desc">실제 조편성, 진출 슬롯, 국가대표 페이지 링크가 여기에 표시됩니다.</p>
         </aside>
 
         <section class="bracket-wrap" aria-label="월드컵 토너먼트 대진표">
           <div id="bracket" class="bracket"></div>
         </section>
+      </section>
+
+      <section class="groups-section" aria-label="실제 조편성">
+        <h2>실제 조편성</h2>
+        <p>각 조 상위 2팀 + 성적 좋은 조 3위 8팀이 32강으로 진출합니다.</p>
+        <div id="groups" class="groups-grid"></div>
       </section>
 
       <section class="cards" aria-label="인기 국가 바로가기">

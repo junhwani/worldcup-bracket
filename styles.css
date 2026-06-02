@@ -39,7 +39,8 @@ button { font: inherit; }
 .team-panel,
 .status-strip,
 .ad-slot,
-.cards {
+.cards,
+.groups-section {
   border: 1px solid var(--line);
   background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.045));
   box-shadow: 0 20px 70px rgba(0,0,0,0.24);
@@ -92,7 +93,7 @@ main { padding: 0 clamp(1rem, 4vw, 3.5rem) 3rem; }
 .squad-link { display: inline-flex; text-decoration: none; color: #06101f; background: var(--green); padding: .78rem 1rem; border-radius: 14px; font-weight: 900; margin-top: 1rem; }
 
 .bracket-wrap { overflow-x: auto; padding-bottom: .5rem; }
-.bracket { min-width: 980px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; align-items: center; }
+.bracket { min-width: 1180px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; align-items: center; }
 .round { display: grid; gap: .8rem; }
 .round-title { color: var(--muted); font-size: .9rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 .2rem; }
 .match {
@@ -122,8 +123,22 @@ main { padding: 0 clamp(1rem, 4vw, 3.5rem) 3rem; }
 .team-row:hover, .team-row.selected { border-color: var(--blue); background: rgba(100,181,255,.14); }
 .team-row.winner { border-color: var(--green); background: rgba(50,213,131,.15); }
 .flag { font-size: 1.85rem; }
-.seed { color: var(--muted); font-size: .76rem; }
-.placeholder { color: #64748b; }
+.team-row strong { font-size: .88rem; margin-left: .35rem; }
+.slot-name { font-size: .86rem; font-weight: 800; text-align: left; }
+.seed { color: var(--muted); font-size: .76rem; text-align: right; }
+.placeholder { color: #d6dee9; cursor: default; }
+.placeholder:hover { border-color: transparent; background: rgba(255,255,255,.06); }
+
+.groups-section { margin-top: 1.2rem; border-radius: 28px; padding: 1.2rem; }
+.groups-section h2 { margin: 0 0 .35rem; }
+.groups-section > p { margin: 0 0 1rem; color: var(--muted); }
+.groups-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .8rem; }
+.group-card { border: 1px solid var(--line); background: rgba(255,255,255,.055); border-radius: 20px; padding: .8rem; }
+.group-card h3 { margin: 0 0 .55rem; color: var(--gold); font-size: .95rem; }
+.group-team { width: 100%; border: 1px solid transparent; background: rgba(255,255,255,.055); color: var(--text); border-radius: 14px; padding: .55rem; margin-top: .35rem; display: flex; gap: .55rem; align-items: center; text-align: left; cursor: pointer; }
+.group-team:hover, .group-team.selected { border-color: var(--blue); background: rgba(100,181,255,.14); }
+.group-team strong { display: block; font-size: .92rem; }
+.group-team small { display: block; color: var(--muted); font-size: .74rem; }
 
 .cards { margin-top: 1.2rem; border-radius: 28px; padding: 1.2rem; }
 .cards h2 { margin: 0 0 1rem; }
